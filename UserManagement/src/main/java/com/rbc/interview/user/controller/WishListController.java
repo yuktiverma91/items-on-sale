@@ -18,6 +18,9 @@ public class WishListController {
     @Autowired
     WishListRepo wishListRepo;
 
+    /**
+     *
+     * */
     @GetMapping("/usersWishList/{user-id}")
     public List<String> getWlById(@PathVariable(value = "user-id") String userId) throws UserNotFoundException {
         return wishListRepo.findWishListByUserId(userId);

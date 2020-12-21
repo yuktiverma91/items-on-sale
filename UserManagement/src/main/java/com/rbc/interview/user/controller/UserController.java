@@ -18,16 +18,23 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
+    /**
+     *
+     * */
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
 
-    // Get a Single User
+    /**
+     *
+     * */
     @GetMapping("/users/{user-id}")
     public User getUserById(@PathVariable(value = "user-id") String userId) throws UserNotFoundException {
-        return userRepo.findById(userId)
+        return userRepo
+                .findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
+
     }
 }
 
